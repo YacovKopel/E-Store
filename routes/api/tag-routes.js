@@ -9,7 +9,7 @@ router.get('/', async(req, res) => {
 
   try {
     const tagData = await Tag.findAll({
-      include: [{ model: Product }],
+      include: [{ model: Product, through: ProductTag, as: "tags"}]
     });
     res.status(200).json(tagData);
   } catch (err) {
@@ -22,7 +22,7 @@ router.get('/:id', async(req, res) => {
   // be sure to include its associated Products
   try {
     const tagData = await Tag.findByPk(req.params.id, {
-      include: [{ model: Product }],
+      include: [{ model: Product, through: ProductTag, as: "tags" }],
     });
 
     if (!tagData) {
@@ -50,6 +50,10 @@ router.post('/', async(req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
+
+  
+
+
 });
 
 router.delete('/:id', async(req, res) => {
