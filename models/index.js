@@ -16,7 +16,7 @@ Category.hasMany(Product, {
 
 // Products belongToMany Tags (through ProductTag)
 Product.belongsToMany(Tag, {
-  // Define the third table needed to store the foreign keys
+  // third table needed to store the foreign keys
   through: {
     model: ProductTag,
     unique: false
